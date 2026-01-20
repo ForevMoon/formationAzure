@@ -23,6 +23,7 @@ env:
   AZURE_RG: RG3
   AZURE-LOCATION: WestEurope
   AZURE-WEBAPP-NAME: suuu-mywebapp
+  AZURE_SUBSCRIPTION: 8ab466a8-2091-4f6e-b081-c951efe96c18
 
 on:
   push:
@@ -101,7 +102,7 @@ jobs:
         id: deploywebapp
         with:
           deploymentName: create-webapp
-          subscriptionId: ${{secrets.AZURE_SUBSCRIPTION}}
+          subscriptionId: ${{env.AZURE_SUBSCRIPTION}}
           resourceGroupName: ${{env.AZURE_RG }}
           template: ${{runner.temp}}/templates/webapp.bicep
           parameters: location=${{env.AZURE-LOCATION}} appName=${{env.AZURE-WEBAPP-NAME}}
