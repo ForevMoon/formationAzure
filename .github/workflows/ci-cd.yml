@@ -21,7 +21,6 @@ name: CI-CD
 
 env:
   AZURE_RG: RG3
-  AZURE_SUBSCRIPTION: <<Subscription_ID>>
   AZURE-LOCATION: WestEurope
   AZURE-WEBAPP-NAME: suuu-mywebapp
 
@@ -102,7 +101,7 @@ jobs:
         id: deploywebapp
         with:
           deploymentName: create-webapp
-          subscriptionId: ${{env.AZURE_SUBSCRIPTION}}
+          subscriptionId: ${{secrets.AZURE_SUBSCRIPTION}}
           resourceGroupName: ${{env.AZURE_RG }}
           template: ${{runner.temp}}/templates/webapp.bicep
           parameters: location=${{env.AZURE-LOCATION}} appName=${{env.AZURE-WEBAPP-NAME}}
